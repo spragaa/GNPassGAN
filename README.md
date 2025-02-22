@@ -8,18 +8,31 @@ The model used in PassGAN is inspired from paper [Improved Training of Wasserste
 
 ## Install dependencies
 
+#### Conda env
+```bash
+conda create -n gn_pass_gan python=3.8
+conda activate gn_pass_gan
+
+conda install pip
+conda install cudatoolkit=10.0
+
+pip3 install -r requirements.txt
+```
+
+#### Venv
 ```bash
 # requires CUDA 10 to be pre-installed
 python3 -m venv .venv 
 source .venv/bin/activate  
 pip3 install -r requirements.txt
 ```
+
 ## Generate password samples
 ```bash
 # generate 100,000,000 passwords
 python3 sample.py \
 	--input-dir output \
-	--output generated/sample.txt \
+	--output data/generated_sample.txt \
   	--seq-length 12 \
   	--num-samples 10000000
 ```
@@ -29,7 +42,7 @@ python3 sample.py \
 2) Train for 200,000 iterations, saving checkpoints every 10,000.
 3) Use the default hyperparameters from the paper for training.
 ```
-python3 models.py --training-data data/YOUR TRAINING DATA --output-dir output
+python3 models.py --training-data data/YOUR_TRAINING_DATA --output-dir output
 ```
 
 ## Check matching accuracy
